@@ -1,8 +1,4 @@
 
-P
- packages/functions/src/lambda.ts,9/9/99c7eb5c6a13cd96619f8e9f27dbf5d2be9bc721
-A
-stacks/MyStack.ts,2/e/2e09dca30606957f6c4cda7e89bb0ed2551645d0
 º
 ‰node_modules/.pnpm/sst@2.42.0_@aws-sdk+client-sso-oidc@3.583.0_aws-crt@1.21.2__aws-crt@1.21.2/node_modules/sst/constructs/StaticSite.d.ts,7/c/7c3224f848ad07e859fbf82440abd48c75a49e2c
 B
@@ -17,18 +13,8 @@ A
 sst.config.ts,d/8/d8f1404a8ac508a308342fde186b8ad26777e707
 P
  packages/functions/src/upload.ts,b/a/bab30f5357de7ed9bfb8db9fb674399bc13dec7d
-N
-packages/functions/src/todo.ts,1/b/1b9de3e81dd069d1c9cdb339a13a2d8c8f23c841
-]
--packages/functions/src/events/todo-created.ts,d/e/deb03297c2a8eaff9b549a60b29f24eece8998b2
 O
 packages/functions/package.json,e/3/e3df7ef21167c746c083506315fae4a1d91a0a53
-Q
-!packages/functions/src/handler.ts,5/7/575b99331906c48ac33b580f2e1e21700dcc5b6b
-J
-packages/core/src/event.ts,e/f/ef626881e8e1b8544fe84adbe012bf3d3a0038f2
-I
-packages/core/src/todo.ts,1/c/1c36dc89c95a90169ad5fe70685702f2551dbf41
 L
 packages/core/src/handler.ts,8/c/8c02563b36b24086067085c1d5f8da7ffa89dc23
 N
@@ -47,14 +33,8 @@ U
 %packages/frontend/acc_gui/src/App.vue,4/0/401d294c2a470524a005ac1087e1e3ebdf986434
 U
 %packages/frontend/acc_gui/src/main.ts,9/2/927d5b114ea6ad68f9f3d3f5d73fde27c229d0b4
-g
-7packages/frontend/acc_gui/src/components/HelloWorld.vue,4/f/4fd9ceb03deb22e1d7d91a6cd208e261cc18886e
-a
-1packages/frontend/acc_gui/src/views/AboutView.vue,1/b/1bca0e0d189894bffcf555f1c8627104cad128d2
 ]
 -packages/frontend/acc_gui/src/router/index.ts,0/f/0f666096f401eb79115b5381eb3bf213ed07c0b4
-\
-,packages/frontend/acc_gui/src/views/Form.vue,c/e/cec1b1f4dce5d4bbd6e69db6d085becb28ab8a9a
 \
 ,packages/frontend/acc_gui/tsconfig.node.json,f/d/fdcb382eeb80d9a5d6b67107269ad9899b187d0b
 \
@@ -69,8 +49,6 @@ S
 mnode_modules/.pnpm/vue-router@4.3.2_vue@3.4.27_typescript@5.4.5_/node_modules/vue-router/dist/vue-router.d.ts,a/1/a1ca61905f33f712aa2a2a8fad880991c05073ab
 ]
 -packages/frontend/acc_gui/src/assets/logo.svg,9/3/93a76a2c6681c653eef648255d24818416d10ef7
-g
-7packages/frontend/acc_gui/src/config/configuration.json,f/a/fab67be667fe4939a5a9a24f6068c3ff3077fa8c
 ]
 -packages/frontend/acc_gui/src/config/index.ts,d/6/d64625b2fa0e824902715fa6f3dd98ec9d9c7aa0
 R

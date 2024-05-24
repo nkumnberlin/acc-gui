@@ -1,42 +1,44 @@
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import { APIGatewayProxyHandler } from "aws-lambda";
-import * as crypto from "crypto";
+import { S3 } from '@aws-sdk/client-s3'
+import { APIGatewayProxyHandler } from 'aws-lambda'
 
-const s3 = new S3Client({ region: process.env.AWS_REGION });
+const s3 = new S3
 
 export const main: APIGatewayProxyHandler = async (event) => {
-    if(!event.body) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ error: 'No Body' }),
-        };
+  if (!event.body) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'No Body' })
     }
-    console.log('___ ', event.body)
-    const body = JSON.parse(event.body);
-    const { fileName, fileType } = body;
+  }
+  const jsonBody = JSON.parse(event.body)
+  const { fileName, body } = jsonBody
 
-    const bucketName = process.env.BUCKET_NAME;
-    const key = `${crypto.randomUUID()}-${fileName}`;
 
-    const command = new PutObjectCommand({
-        Bucket: bucketName,
-        Key: key,
-        ContentType: fileType,
-    });
+  const bucketName = process.env.BUCKET_NAME
+  const key = `${fileName}.json`
+  console.log('les go',
+    key,
+    'bucket ,',
+    bucketName,
+    body)
+  const command = {
+    Bucket: bucketName,
+    Key: key,
+    Body: body,
+    ContentType: 'application/json'
+  }
 
-    try {
-        await s3.send(command);
-        return {
-            statusCode: 200,
-            body: JSON.stringify({
-                key,
-                url: `https://${bucketName}.s3.amazonaws.com/${key}`,
-            }),
-        };
-    } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ error: 'error.message' }),
-        };
+
+  try {
+    await s3.putObject(command)
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'File uploaded successfully' })
     }
-};
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'error.message' })
+    }
+  }
+}
