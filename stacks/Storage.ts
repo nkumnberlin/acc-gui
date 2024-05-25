@@ -13,6 +13,7 @@ export function Storage({ stack }: StackContext) {
         ],
     });
 
+
     return {
         bucket
     }

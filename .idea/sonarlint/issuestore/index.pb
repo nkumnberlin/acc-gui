@@ -55,3 +55,15 @@ R
 "packages/frontend/acc_gui/env.d.ts,a/9/a99d01d7eb423f75603e94e507ae87d4975e4862
 T
 $packages/frontend/acc_gui/.gitignore,e/f/ef97437be8123771a1b4be237be80181c0f6ce35
+W
+'packages/frontend/acc_gui/tsconfig.json,d/2/d21b5d0a09620ae8cf5eb3672aac85d193dc01eb
+<
+package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
+P
+ packages/functions/src/syncS3.ts,7/7/776918d9edc3c1e798a594be92d46a362cf5c4fa
+B
+stacks/Function.ts,8/a/8a725f23d132ad85007a77712318e10d23a2fbe6
+4
+.env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
+>
+pnpm-lock.yaml,a/8/a829ed6336deb68f9874e5da490e1ec440b0e9b7

@@ -7,6 +7,7 @@ import { configuration, event, eventRules, settings, tracks } from '../config'
 import 'primevue/resources/themes/saga-blue/theme.css'
 import 'primevue/resources/primevue.min.css'
 
+// todos
 // systemsmanager -> ses -> python script
 // aktuele config anzeigen
 export default {
@@ -72,7 +73,7 @@ export default {
       tracks: tracks,
       file: null as File | null,
       apiEndpoint: import.meta.env.VITE_APP_API_URL, // Replace with your API endpoint,
-      message: ''
+      message: '' as string
     }
   },
   methods: {
@@ -145,7 +146,7 @@ export default {
     <!--    only display if message exist. check if positive or negative message. it either contains error or success-->
     <div v-if="message" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative"
          role="alert">
-      <span class="block sm:inline">{{ this.message }}</span>
+      <span class="block sm:inline">{{ message }}</span>
       <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
         <svg class="fill-current h-6 w-6 text-green-500" role="button"
              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

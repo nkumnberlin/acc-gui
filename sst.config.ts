@@ -2,6 +2,7 @@ import { SSTConfig } from "sst";
 import {API} from "./stacks/API";
 import { Storage } from "./stacks/Storage";
 import { Frontend } from "./stacks/Frontend";
+import { Functions } from "./stacks/Function";
 
 export default {
   config(_input) {
@@ -11,6 +12,6 @@ export default {
     };
   },
   stacks(app) {
-    app.stack(Storage).stack(API).stack(Frontend);
+    app.stack(Storage).stack(API).stack(Frontend).stack(Functions);
   }
 } satisfies SSTConfig;
