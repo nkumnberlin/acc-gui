@@ -1,47 +1,34 @@
-import AWS from'aws-sdk';
+import AWS, { SNS } from 'aws-sdk'
 
 const s3 = new AWS.S3();
 const ec2 = new AWS.EC2();
 const ssm = new AWS.SSM();
+const sns = new SNS();
+
 
 export const main = async (event: any) => {
   const instanceId = process.env.EC2_INSTANCE_ID!;
   const bucketName = process.env.BUCKET_NAME!;
   const objectKey = event.Records[0].s3.object.key;
 
+
+
+
   try {
     console.log('_moment buckett',bucketName)
     console.log('_moment object',instanceId)
     console.log('_moment instance',objectKey)
 
-    // // Example S3 operation: List objects in a bucket
-    // const s3Response = await s3.listObjectsV2({ Bucket: bucketName }).promise();
-    // console.log("S3 Response:", s3Response);
-    //
-    // // Example EC2 operation: Describe instances
-    // const ec2Response = await ec2.describeInstances().promise();
-    // console.log("EC2 Response:", ec2Response);
-
-    const command = `Copy-S3Object -BucketName ${bucketName} -Key ${objectKey} -Destination C:/Users/Administrator/Downloads/`;
-    // const command = `aws s3 cp s3://${bucketName}/${objectKey} C:/Users/Administrator/Downloads/`;
-
-    const params = {
-      InstanceIds: [ instanceId ],
-      DocumentName: "AWS-RunPowerShellScript",
-      Parameters: {
-        'commands': [command]
-      },
+    const message = {
+      default: JSON.stringify({ bucket: bucketName, key: objectKey }),
     };
-    try {
-      console.log('params ', params)
-      const data = await ssm.sendCommand(params).promise();
-      console.log(data);
-      return data;
-    } catch (err) {
-      console.error(err);
-      throw new Error('Failed to send command via SSM');
-    }
+    const params = {
+      Message: JSON.stringify(message),
+      TopicArn: 'arn:aws:sns:eu-central-1:851725375448:trigger_on_s3_update'
+    };
 
+    const data = await sns.publish(params).promise();
+    console.log('Message sent:', data);
     return {
       statusCode: 200,
       body: JSON.stringify({
