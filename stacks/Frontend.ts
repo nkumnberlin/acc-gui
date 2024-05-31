@@ -10,13 +10,7 @@ export function Frontend({ stack }: StackContext) {
     path: "packages/frontend/acc_gui",
     buildOutput: "dist",
     buildCommand: "pnpm run build",
-    environment: {
-      VUE_APP_BUCKET_URL: bucket.bucketName,
-    }
   })
-
-  // @ts-ignore
-  console.log('____, ,', page.url)
 
   stack.addOutputs({
     api: api.url,
