@@ -19,7 +19,8 @@ export function API({ stack }: StackContext) {
             allowMethods: ["GET", "POST", "PUT", "DELETE"],
         },
         routes: {
-            "POST /upload": "packages/functions/src/upload.main"
+            "POST /upload": "packages/functions/src/upload.main",
+            "GET /download": "packages/functions/src/download.main"
         }
     })
 

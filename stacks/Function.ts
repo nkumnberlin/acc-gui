@@ -9,7 +9,7 @@ export function Functions({ stack }: StackContext) {
     handler: 'packages/functions/src/syncS3.main',
     environment: {
       BUCKET_NAME: bucket.bucketName,
-      EC2_INSTANCE_ID: process.env.EC2_INSTANCE_ID,
+      EC2_INSTANCE_ID: process.env.EC2_INSTANCE_ID!,
     },
   })
   bucket.attachPermissions([func]);
