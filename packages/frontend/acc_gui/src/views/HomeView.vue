@@ -25,13 +25,7 @@ interface ReturnConfiguration {
   message: ConfigFiles[]
 }
 
-const configurationKeysToRender = ref([
-  'maxConnections',
-  'registerToLobby',
-  'track',
-  'serverName',
-  ''
-])
+const configurationKeysToRender = ref(['maxConnections', 'registerToLobby', 'track', 'serverName'])
 function updateTrackSelection(selectedTrack: { key: string; name: string }) {
   console.log(selectedTrack.key)
 }
@@ -41,7 +35,6 @@ function updateCarSelection(selectedCar: { key: string; name: string }) {
 }
 
 const configuration = ref(defaultConfiguration)
-const existingConfigurations: { value: ConfigFiles[] } = ref([])
 
 async function fetchExistingConfiguration() {
   const response: AxiosResponse<ReturnConfiguration> = await axios.get(
@@ -51,6 +44,22 @@ async function fetchExistingConfiguration() {
 }
 
 onMounted(async () => {
-  existingConfigurations.value = await fetchExistingConfiguration()
+  const serverConfig = await fetchExistingConfiguration()
+  console.log('_ ', serverConfig)
+  const x = [...serverConfig].map((configObj) => {
+    // console.log('_kekw', configObj)
+    Object.keys(configObj).forEach((configKey) => {
+      Object.keys(configObj[configKey]).forEach((keysOfEachConfig) => {
+        if (configuration.value[keysOfEachConfig]) {
+          const valueOfServerConfig = configObj[configKey][keysOfEachConfig]
+          if (configuration.value[keysOfEachConfig].type === 'number') {
+            const newVal = parseInt(configObj[configKey][keysOfEachConfig])
+            console.log('hi ', keysOfEachConfig)
+            configuration.value[keysOfEachConfig].value = newVal
+          }
+        }
+      })
+    })
+  })
 })
 </script>
