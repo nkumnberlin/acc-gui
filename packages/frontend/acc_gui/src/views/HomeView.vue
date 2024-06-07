@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-2">
       <div class="flex flex-col pt-2" v-for="key in configurationKeysToRender" :key>
         <ComponentHandler
-          :configuration="configuration"
+          :configuration="configurationRef"
           :componentKey="key"
           @update-car-group="updateCarSelection"
           @update-track-selection="updateTrackSelection"
@@ -34,7 +34,7 @@ function updateCarSelection(selectedCar: { key: string; name: string }) {
   console.log(selectedCar.key)
 }
 
-const configuration = ref(defaultConfiguration)
+const configurationRef = ref(defaultConfiguration)
 
 async function fetchExistingConfiguration() {
   const response: AxiosResponse<ReturnConfiguration> = await axios.get(
@@ -45,17 +45,17 @@ async function fetchExistingConfiguration() {
 
 onMounted(async () => {
   const serverConfig = await fetchExistingConfiguration()
-  console.log('_ ', serverConfig)
-  const x = [...serverConfig].map((configObj) => {
-    // console.log('_kekw', configObj)
+  let config = {}
+  serverConfig.forEach((configObj) => {
     Object.keys(configObj).forEach((configKey) => {
-      Object.keys(configObj[configKey]).forEach((keysOfEachConfig) => {
-        if (configuration.value[keysOfEachConfig]) {
-          const valueOfServerConfig = configObj[configKey][keysOfEachConfig]
-          if (configuration.value[keysOfEachConfig].type === 'number') {
-            const newVal = parseInt(configObj[configKey][keysOfEachConfig])
-            console.log('hi ', keysOfEachConfig)
-            configuration.value[keysOfEachConfig].value = newVal
+      const subConfig = configObj[configKey]
+      Object.entries(subConfig).forEach(([keysOfEachConfig, valueOfServerConfig]) => {
+        if (configurationRef.value[keysOfEachConfig]) {
+          if (configurationRef.value[keysOfEachConfig].type === 'number') {
+            const parsedVal = parseInt(valueOfServerConfig)
+            configurationRef.value[keysOfEachConfig].value = parsedVal
+            console.log(configurationRef.value)
+            console.log(keysOfEachConfig)
           }
         }
       })

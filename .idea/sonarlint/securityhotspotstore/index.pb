@@ -79,12 +79,6 @@ W
 ,packages/frontend/acc_gui/src/views/dump.vue,3/4/345cdd9885ad1d647b313785974d8b84e5e1eb09
 Z
 *packages/frontend/acc_gui/src/sst-env.d.ts,f/3/f30df19fbb41e86182b79136c8aadf81d76116d8
-a
-1packages/frontend/acc_gui/src/components/Text.vue,3/8/3820d4955a5a7d82be8dd9398fb339733cbf08d6
-e
-5packages/frontend/acc_gui/src/components/Dropdown.vue,e/8/e88f17b824291470bbfc598a85016ec4f300a63f
-c
-3packages/frontend/acc_gui/src/components/Number.vue,5/e/5ee05eeee485b388a2e5fe8c78a1a7db13080b32
 i
 9packages/frontend/acc_gui/src/components/ConfigNumber.vue,2/1/214570b6460cfc79c260bc87c12f47a56132a549
 g

@@ -4,7 +4,7 @@
     v-model="selectedOption"
     editable
     :id="configKey"
-    :options="dropdownRef.options"
+    :options="dropdownOptions"
     optionLabel="name"
     placeholder="Select a City"
     class="w-full md:w-[14rem]"
@@ -30,13 +30,6 @@ const dropdownOptions = Object.keys(props.options).map((key) => ({
   key: key,
   name: props.options[key]
 }))
-const dropdownRef = ref({
-  configuration: {
-    ...props.configuration,
-    value: props.configuration.value as string
-  },
-  configKey: props.configKey,
-  options: dropdownOptions
-})
+
 const selectedOption = ref<string>()
 </script>
